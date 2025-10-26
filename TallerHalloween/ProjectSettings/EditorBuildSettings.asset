@@ -8,6 +8,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_3DStealthGame/Tutorial_Demo/Demo_Scenes/MainMenu.unity
     guid: e0afa25d30aeb924895fa68e23be7af2
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: bee5b10206262db40924811f384196c6
+  - enabled: 1
+    path: Assets/Scenes/EscenaDeCarga.unity
+    guid: c2e89a520187b1b4c8a5391efedc885f
+  - enabled: 1
+    path: Assets/Scenes/Juego.unity
+    guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 3be4d7c4f451d314f8d1d86aa5a1979f,
       type: 2}
