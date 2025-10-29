@@ -1,15 +1,35 @@
 using UnityEngine;
 
-public class GhostTarget : MonoBehaviour
+public class GhostBehavior : MonoBehaviour
 {
-    public GameObject smokeVFX;
+    public GameObject deathEffect;
+    public Animator ghostAnimator;
+    public float destroyDelay = 1f;
 
-    public void EliminarFantasma()
+    private bool isDying = false;
+
+    public void Eliminate()
     {
-        if (smokeVFX != null)
+        if (isDying) return;
+        isDying = true;
+
+        if (ghostAnimator != null)
         {
-            Instantiate(smokeVFX, transform.position, Quaternion.identity);
+            ghostAnimator.SetTrigger("Die");
         }
-        Destroy(gameObject);
+
+        if (deathEffect != null)
+        {
+            Instantiate(deathEffect, transform.position, Quaternion.identity);
+        }
+
+        // Notificar al gestor
+        GhostManager manager = FindObjectOfType<GhostManager>();
+        if (manager != null)
+        {
+            manager.RegisterGhostKill();
+        }
+
+        Destroy(gameObject, destroyDelay);
     }
 }

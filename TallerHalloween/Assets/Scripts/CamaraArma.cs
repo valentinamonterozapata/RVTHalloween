@@ -1,26 +1,26 @@
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
-public class CameraObjectTrigger : MonoBehaviour
+public class WeaponUIActivator : MonoBehaviour
 {
-    [Header("Canvas que simula la vista de cámara")]
-    public Canvas ghostCameraCanvas;
+    public GameObject canvasUI;
+    private UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable grab;
 
-    [Header("Objeto visual que representa la cámara activa")]
-    public GameObject cameraOverlayUI;
-
-    private bool activado = false;
-
-    void OnTriggerEnter(Collider other)
+    void Awake()
     {
-        if (other.CompareTag("Player") && !activado)
-        {
-            activado = true;
+        grab = GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>();
+        grab.selectEntered.AddListener(OnGrabbed);
+        grab.selectExited.AddListener(OnReleased);
+        canvasUI.SetActive(false);
+    }
 
-            if (ghostCameraCanvas != null)
-                ghostCameraCanvas.enabled = true;
+    void OnGrabbed(SelectEnterEventArgs args)
+    {
+        canvasUI.SetActive(true);
+    }
 
-            if (cameraOverlayUI != null)
-                cameraOverlayUI.SetActive(true);
-        }
+    void OnReleased(SelectExitEventArgs args)
+    {
+        canvasUI.SetActive(false);
     }
 }

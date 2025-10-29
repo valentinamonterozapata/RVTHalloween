@@ -1,26 +1,52 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class GhostPhotoShooter : MonoBehaviour
+public class GhostShooterRaycast : MonoBehaviour
 {
-    [Header("Transform desde donde se lanza el disparo")]
-    public Transform shootOrigin;
+    [Header("Input Action")]
+    public InputActionReference shootAction; // Gatillo derecho
 
-    [Header("Distancia máxima")]
-    public float maxDistance = 100f;
+    [Header("Raycast")]
+    public Transform rayOrigin; // Punto desde donde se lanza el raycast
+    public float rayDistance = 50f;
+
+    [Header("Audio")]
+    public AudioSource fireSound;
+
+    private bool canShoot = true;
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(1)) // Click derecho o botón de disparo
-        {
-            Ray ray = new Ray(shootOrigin.position, shootOrigin.forward);
+        if (shootAction == null || shootAction.action == null) return;
 
-            if (Physics.Raycast(ray, out RaycastHit hit, maxDistance))
+        float triggerValue = shootAction.action.ReadValue<float>();
+
+        if (canShoot && triggerValue > 0.75f)
+        {
+            ShootRay();
+            canShoot = false;
+        }
+
+        if (triggerValue < 0.1f)
+        {
+            canShoot = true;
+        }
+    }
+
+    void ShootRay()
+    {
+        if (fireSound != null)
+        {
+            fireSound.Play();
+        }
+
+        Ray ray = new Ray(rayOrigin.position, rayOrigin.forward);
+        if (Physics.Raycast(ray, out RaycastHit hit, rayDistance))
+        {
+            GhostBehavior ghost = hit.collider.GetComponent<GhostBehavior>();
+            if (ghost != null)
             {
-                GhostTarget ghost = hit.collider.GetComponent<GhostTarget>();
-                if (ghost != null)
-                {
-                    ghost.EliminarFantasma();
-                }
+                ghost.Eliminate();
             }
         }
     }
