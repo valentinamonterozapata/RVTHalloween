@@ -17,6 +17,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Juego.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Final.unity
+    guid: 3d6b3097e89775e40a72f3e3779190e9
+  - enabled: 1
+    path: Assets/Scenes/EscenaDeCarga2 1.unity
+    guid: 957ba8315ceed1346bfce21cbf53615a
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 3be4d7c4f451d314f8d1d86aa5a1979f,
       type: 2}
