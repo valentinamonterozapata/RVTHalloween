@@ -880,7 +880,7 @@ MonoBehaviour:
   - {fileID: 1468981485}
   - {fileID: 188745966}
   - {fileID: 745094715}
-  Final: 
+  FinalCarga: FinalCarga
 --- !u!4 &339809546
 Transform:
   m_ObjectHideFlags: 0
@@ -1584,7 +1584,7 @@ PrefabInstance:
     - target: {fileID: 2034179033855149244, guid: 8fc0909805568a740b4f204e7e07e051,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.983
+      value: -0.7975
       objectReference: {fileID: 0}
     - target: {fileID: 2034179033855149244, guid: 8fc0909805568a740b4f204e7e07e051,
         type: 3}
