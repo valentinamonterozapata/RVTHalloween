@@ -7,7 +7,7 @@ public class GhostWatcher : MonoBehaviour
     public GameObject[] ghosts;
 
     [Tooltip("Nombre exacto de la escena a la que quieres cambiar")]
-    public string nextSceneName;
+    public string Final;
 
     private bool sceneLoaded = false;
 
@@ -32,9 +32,9 @@ public class GhostWatcher : MonoBehaviour
 
     void LoadNextScene()
     {
-        if (!string.IsNullOrEmpty(nextSceneName))
+        if (!string.IsNullOrEmpty(Final))
         {
-            SceneManager.LoadScene(nextSceneName);
+            SceneManager.LoadScene(Final);
         }
         else
         {

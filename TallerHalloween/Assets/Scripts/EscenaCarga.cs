@@ -8,7 +8,7 @@ public class LoadingBarController : MonoBehaviour
     [Header("Configuración de la barra de carga")]
     public Slider loadingSlider;
     [Tooltip("Nombre exacto de la escena a cargar")]
-    public string sceneToLoad = "NombreDeTuEscena";
+    public string sceneToLoad = "Juego";
     [Tooltip("Velocidad visual de llenado del slider")]
     public float fillSpeed = 0.2f;
 
